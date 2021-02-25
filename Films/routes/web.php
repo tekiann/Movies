@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FilmesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','App\Http\Controllers\FilmesController@search');
-Route::post('/','App\Http\Controllers\FilmesController@search')->name('search_film');
+Route::get('/',[FilmesController::class, 'create']);
+Route::post('/',[FilmesController::class, 'search'])->name('search_film');
+Route::get('/s={imdbID}',[FilmesController::class, 'info'])->name('info');
+Route::get('/s={nomeRequest}/page={page}',[FilmesController::class, 'pagination']);
+
 
